@@ -1,0 +1,9 @@
+name: telegram-message-receiver
+services:
+  - name: telegram-bot
+    image:
+      name: docker.io/library/telegram-message-receiver
+      tag: latest
+    ports:
+      - port: 80
+        protocol: http
