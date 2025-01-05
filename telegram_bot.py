@@ -7,6 +7,14 @@ session_string = os.getenv("SESSION_STRING")
 
 app = Client("my_session", api_id=api_id, api_hash=api_hash, session_string=session_string, in_memory=True)
 
+try:
+    app.start()
+    print("Session string is valid.")
+except Exception as e:
+    print(f"Invalid session string: {e}")
+finally:
+    app.stop()
+
 @app.on_message(filters.private)
 def handle_message(client, message):
     print(f"Received message from {message.from_user.id}: {message.text}")
